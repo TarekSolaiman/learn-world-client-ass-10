@@ -9,7 +9,7 @@ import avatar from "../imges/avatarImg.png";
 const Header = () => {
   const [dark, setDark] = useState(false);
   const { user, logout } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   const handelLogout = () => {
     logout()
@@ -17,7 +17,7 @@ const Header = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div className="navbar bg-base-100 sticky top-0">
+    <div className="navbar sticky top-0 shadow-lg bg-base-100lg:container lg:mx-auto">
       <div className="flex-1 justify-between">
         <div className="flex items-center">
           <img className="h-14" src={logo} alt="" />

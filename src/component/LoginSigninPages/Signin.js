@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../userContext/UserProvide";
 
 const Signin = () => {
-  const { googleSign, signinWithEmailPAssword } = useContext(AuthContext);
+  const {
+    googleSign,
+    registerWithEmailPAssword,
+    verificationSend,
+    updateNamePhoto,
+  } = useContext(AuthContext);
 
   const handleSignin = (e) => {
     e.preventDefault();
@@ -19,9 +24,16 @@ const Signin = () => {
     console.log(email, password, photo, name);
 
     // sign in with email and password
-    signinWithEmailPAssword(email, password)
-      .then((res) => {
-        const user = res.user;
+    registerWithEmailPAssword(email, password)
+      .then(() => {
+        // verifi email send
+        verificationSend();
+
+        //update name and photo
+        updateNamePhoto(name, photo)
+          .then(() => {})
+          .catch((e) => console.log(e));
+        form.reset();
       })
       .catch((e) => console.log(e));
   };
@@ -29,10 +41,7 @@ const Signin = () => {
   // sign in with google
   const handleGoogle = () => {
     googleSign()
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
-      })
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 

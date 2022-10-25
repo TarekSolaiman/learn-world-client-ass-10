@@ -1,21 +1,58 @@
 import React from "react";
+import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../userContext/UserProvide";
 
 const Login = () => {
+  const { googleSign, login, passwordReset } = useContext(AuthContext);
+  // const { resatEmail, setResetEmail } = useState();
+
+  // Log in with email and password
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    // setResetEmail(email);
+    const password = form.password.value;
+    login(email, password)
+      .then(() => {
+        form.reset();
+      })
+      .catch((e) => {});
+    console.log(email, password);
+  };
+  // sign in with google
+  const handleGoogle = () => {
+    googleSign()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
+  // reset password in mail
+  // const handlerRsetPassword = () => {
+  //   passwordReset(resatEmail)
+  //     .then(() => {})
+  //     .catch((e) => console.log(e));
+  // };
   return (
     <div>
       <div className="my-10 mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
         <h1 className="text-2xl font-bold text-center">Log in</h1>
-        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <form
+          onSubmit={handleLogin}
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
+        >
           <div className="space-y-1 text-sm">
-            <label htmlFor="username" className="block text-gray-400">
-              Username
+            <label htmlFor="email" className="block text-gray-400">
+              Email
             </label>
             <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-700 text-gray-100 focus:border-violet-400"
             />
           </div>
           <div className="space-y-1 text-sm">
@@ -23,18 +60,17 @@ const Login = () => {
               Password
             </label>
             <input
+              required
               type="password"
               name="password"
               placeholder="Password"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-700 text-gray-100 focus:border-violet-400"
             />
             <div className="flex justify-end text-xs text-gray-400">
-              <Link rel="noopener noreferrer" href="#">
-                Forgot Password?
-              </Link>
+              <p rel="noopener noreferrer">Forgot Password?</p>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400">
+          <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-yellow-400">
             Sign in
           </button>
         </form>
@@ -46,7 +82,11 @@ const Login = () => {
           <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogle}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
