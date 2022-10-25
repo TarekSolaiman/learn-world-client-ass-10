@@ -6,15 +6,9 @@ import Header from "../SharePage/Header";
 const Main = () => {
   return (
     <div>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <Outlet />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

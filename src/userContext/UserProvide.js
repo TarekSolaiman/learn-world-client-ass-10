@@ -1,15 +1,20 @@
 import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
-export const AurhContext = createContext();
+import { getAuth } from "firebase/auth";
+import app from "../firebase/firebase.config";
+
+const auth = getAuth(app);
+
+export const AuthContext = createContext();
 
 const UserProvide = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const doli = { name: "ollok" };
-  const authInfo = {};
+  const authInfo = { doli };
   return (
-    <AurhContext.Provider value={authInfo}>{children}</AurhContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
