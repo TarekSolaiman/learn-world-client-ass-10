@@ -3,12 +3,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../userContext/UserProvide";
 
 const Profile = () => {
-  const { doli } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   // console.log();
   return (
     <div>
       <h1>this is Proifile page</h1>
-      <p>Name : {doli.name}</p>
+      <p>Name : </p>
     </div>
   );
 };

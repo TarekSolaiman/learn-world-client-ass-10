@@ -1,54 +1,49 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
     <div>
-      <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
-        <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form
-          novalidate=""
-          action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
-        >
+      <div className="my-10 mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
+        <h1 className="text-2xl font-bold text-center">Log in</h1>
+        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
           <div className="space-y-1 text-sm">
-            <label for="username" className="block dark:text-gray-400">
+            <label htmlFor="username" className="block text-gray-400">
               Username
             </label>
             <input
               type="text"
               name="username"
-              id="username"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="password" className="block dark:text-gray-400">
+            <label htmlFor="password" className="block text-gray-400">
               Password
             </label>
             <input
               type="password"
               name="password"
-              id="password"
               placeholder="Password"
-              className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
-            <div className="flex justify-end text-xs dark:text-gray-400">
-              <a rel="noopener noreferrer" href="#">
+            <div className="flex justify-end text-xs text-gray-400">
+              <Link rel="noopener noreferrer" href="#">
                 Forgot Password?
-              </a>
+              </Link>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">
+          <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400">
             Sign in
           </button>
         </form>
         <div className="flex items-center pt-4 space-x-1">
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-          <p className="px-3 text-sm dark:text-gray-400">
+          <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
+          <p className="px-3 text-sm text-gray-400">
             Login with social accounts
           </p>
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+          <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
           <button aria-label="Log in with Google" className="p-3 rounded-sm">
@@ -79,15 +74,15 @@ const Login = () => {
             </svg>
           </button>
         </div>
-        <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+        <p className="text-xs text-center sm:px-6 text-gray-400">
           Don't have an account?
-          <a
+          <Link
             rel="noopener noreferrer"
-            href="#"
-            className="underline dark:text-gray-100"
+            to="/signin"
+            className="underline text-gray-100"
           >
-            Sign up
-          </a>
+            Sign in
+          </Link>
         </p>
       </div>
     </div>
