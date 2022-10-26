@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../userContext/UserProvide";
 
@@ -13,6 +13,7 @@ const Signin = () => {
     gitHubSingin,
   } = useContext(AuthContext);
 
+  const navigate = useNavigate();
   const handleSignin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,17 +37,30 @@ const Signin = () => {
         //update name and photo
         updateNamePhoto(name, photo)
           .then(() => {})
-          .catch((e) => console.log(e));
+          .catch((e) =>
+            toast.error(e.message, {
+              autoClose: 1000,
+            })
+          );
         form.reset();
+        navigate("/");
       })
-      .catch((e) => console.log(e));
+      .catch((e) =>
+        toast.error(e.message, {
+          autoClose: 1000,
+        })
+      );
   };
 
   // sign in with google
   const handleGoogle = () => {
     googleSign()
       .then(() => {})
-      .catch((error) => console.log(error));
+      .catch((e) =>
+        toast.error(e.message, {
+          autoClose: 1000,
+        })
+      );
   };
 
   //sign in with git hub
