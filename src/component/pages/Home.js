@@ -3,7 +3,8 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <h1 className="text-6xl"> home page</h1>
+      <div className="w-96 bg-base-100 shadow-xl">
         <figure>
           <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
         </figure>

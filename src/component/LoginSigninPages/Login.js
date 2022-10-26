@@ -1,40 +1,92 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../userContext/UserProvide";
 
 const Login = () => {
-  const { googleSign, login, passwordReset } = useContext(AuthContext);
-  // const { resatEmail, setResetEmail } = useState();
+  const { googleSign, login, passwordReset, gitHubSingin } =
+    useContext(AuthContext);
+  const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // Log in with email and password
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
-    // setResetEmail(email);
     const password = form.password.value;
     login(email, password)
       .then(() => {
         form.reset();
+        navigate(from, { replace: true });
+        toast.success("Thanks for login", {
+          autoClose: 1000,
+        });
       })
-      .catch((e) => {});
-    console.log(email, password);
+      .catch((e) => {
+        toast.error(e.message, {
+          autoClose: 1000,
+        });
+      });
   };
+
+  const heandlEmailBluer = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+    console.log(email);
+  };
+
+  const hendelForget = () => {
+    passwordReset(email)
+      .then(() => {
+        toast.warning("Please chake your email and set password", {
+          autoClose: 1000,
+        });
+      })
+      .catch((e) => {
+        toast.error(e.message, {
+          autoClose: 1000,
+        });
+      });
+  };
+
   // sign in with google
   const handleGoogle = () => {
     googleSign()
-      .then(() => {})
-      .catch((error) => console.log(error));
+      .then(() => {
+        toast.success("Thank You login success", {
+          autoClose: 1000,
+        });
+      })
+      .catch((e) => {
+        toast.error(e.message, {
+          autoClose: 1000,
+        });
+      });
   };
 
-  // reset password in mail
-  // const handlerRsetPassword = () => {
-  //   passwordReset(resatEmail)
-  //     .then(() => {})
-  //     .catch((e) => console.log(e));
-  // };
+  // sign in with github
+  const handelGithub = () => {
+    gitHubSingin()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        toast.success("Thank you for sig in", {
+          autoClose: 1000,
+        });
+      })
+      .catch((e) => {
+        toast.error(e.message, {
+          autoClose: 1000,
+        });
+      });
+  };
   return (
     <div>
       <div className="my-10 mx-auto w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
@@ -48,6 +100,7 @@ const Login = () => {
               Email
             </label>
             <input
+              onBlur={heandlEmailBluer}
               required
               type="email"
               name="email"
@@ -67,7 +120,9 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-700 text-gray-100 focus:border-violet-400"
             />
             <div className="flex justify-end text-xs text-gray-400">
-              <p rel="noopener noreferrer">Forgot Password?</p>
+              <span onClick={hendelForget} rel="noopener noreferrer">
+                Forgot Password?
+              </span>
             </div>
           </div>
           <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-yellow-400">
@@ -104,7 +159,11 @@ const Login = () => {
               <path d="M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z"></path>
             </svg>
           </button>
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handelGithub}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
