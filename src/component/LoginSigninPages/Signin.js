@@ -55,7 +55,9 @@ const Signin = () => {
   // sign in with google
   const handleGoogle = () => {
     googleSign()
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch((e) =>
         toast.error(e.message, {
           autoClose: 1000,
@@ -68,6 +70,7 @@ const Signin = () => {
     gitHubSingin()
       .then((res) => {
         const user = res.user;
+        navigate("/");
         console.log(user);
         toast.success("Thank you for sig in", {
           autoClose: 1000,

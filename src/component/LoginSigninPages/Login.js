@@ -60,6 +60,7 @@ const Login = () => {
   const handleGoogle = () => {
     googleSign()
       .then(() => {
+        navigate(from, { replace: true });
         toast.success("Thank You login success", {
           autoClose: 1000,
         });
@@ -77,6 +78,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        navigate(from, { replace: true });
         toast.success("Thank you for sig in", {
           autoClose: 1000,
         });
