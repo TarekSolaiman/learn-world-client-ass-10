@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import CetegoriCart from "./cetagoriList/CetegoriCart";
 import SaitBar from "./cetagoriList/SaitBar";
+import PDF from "../../component/imges/PDF/ReadeBookPDF.pdf";
 
 const Courses = () => {
   // const { cetagori, setCetagori } = useContext(AuthContext);
@@ -43,11 +44,10 @@ const Courses = () => {
           ))}
         </div>
       </section>
-      <button
-        className="flex items-center justify-center w-80 my-10 mx-auto p-3 font-semibold tracking-wide rounded-md bg-yellow-400 text-gray-900"
-        onClick={btnDownloader}
-      >
-        Downloade PDF
+      <button className="flex items-center justify-center w-80 my-10 mx-auto p-3 font-semibold tracking-wide rounded-md bg-yellow-400 text-gray-900">
+        <a href={PDF} download="myfile">
+          Downloade PDF
+        </a>
       </button>
     </div>
   );
