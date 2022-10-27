@@ -15,21 +15,6 @@ const Courses = () => {
       .then((data) => setCetagori(data));
   }, []);
 
-  // downloade pdf ........
-  const btnDownloader = () => {
-    fetch("ReadeBookPDF.pdf").then((res) => {
-      res.blob().then((blob) => {
-        const fileURL = window.URL.createObjectURL(blob);
-        let alink = document.createElement("a");
-        alink.href = fileURL;
-        alink.download =
-          "https://mail.google.com/mail/u/0/#inbox/FMfcgzGqQmVWscxlMcnPHNXZGVSBFNnL?projector=1&messagePartId=0.1";
-        alink.click();
-
-        console.log(fileURL);
-      });
-    });
-  };
   return (
     <div>
       <section className="grid grid-flow-col">
