@@ -122,9 +122,9 @@ const Login = () => {
               className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-700 text-gray-100 focus:border-violet-400"
             />
             <div className="flex justify-end text-xs text-gray-400">
-              <span onClick={hendelForget} rel="noopener noreferrer">
+              <button onClick={hendelForget} rel="noopener noreferrer">
                 Forgot Password?
-              </span>
+              </button>
             </div>
           </div>
           <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-yellow-400">
