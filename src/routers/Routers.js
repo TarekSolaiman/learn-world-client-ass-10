@@ -1,4 +1,3 @@
-import { ProviderId } from "firebase/auth";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../component/LoginSigninPages/Login";
 import Signin from "../component/LoginSigninPages/Signin";
