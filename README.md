@@ -1,5 +1,6 @@
-//
-<===============================Learn World=============================>
+//-----------------------------------------------------------------------------
+
+<==================================Learn World================================>
 
 This is Live site link : https://learn-world-authentication.web.app/
 
@@ -16,9 +17,17 @@ this 5 page website
 
 if user login then go premium page or logout go login page for login
 
-if you have no account so go and sign inpage
+if you have no account so go and sign in page
 
-<===========================///////////===========================>
+premium page you have a form for the registretion in courses
+
+in the courses you have a downloade button for pdf file
+
+<--------------------------Thank You and Visit WebSite-------------------------->
+
+<==================================///////////==================================>
+
+--------------------------------------------------------------------------------//
 
 # Getting Started with Create React App
 

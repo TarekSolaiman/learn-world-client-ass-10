@@ -39,7 +39,7 @@ const Login = () => {
   const heandlEmailBluer = (e) => {
     const email = e.target.value;
     setEmail(email);
-    console.log(email);
+    // console.log(email);
   };
 
   const hendelForget = () => {

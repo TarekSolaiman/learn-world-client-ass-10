@@ -36,7 +36,11 @@ const Signin = () => {
         });
         //update name and photo
         updateNamePhoto(name, photo)
-          .then(() => {})
+          .then(() => {
+            toast.success("Update Photo and name", {
+              autoClose: 1000,
+            });
+          })
           .catch((e) =>
             toast.error(e.message, {
               autoClose: 1000,
@@ -69,9 +73,8 @@ const Signin = () => {
   const handelGithub = () => {
     gitHubSingin()
       .then((res) => {
-        const user = res.user;
         navigate("/");
-        console.log(user);
+        // console.log(user);
         toast.success("Thank you for sig in", {
           autoClose: 1000,
         });
