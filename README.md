@@ -1,3 +1,25 @@
+//
+<===============================Learn World=============================>
+
+This is Live site link : https://learn-world-authentication.web.app/
+
+This is a simple website for learning code courses
+
+iam use tailwind css for the website design and ( Mumba ui , daisy ui )
+
+this 5 page website
+1st page is home pase for introduction
+2nd page is courses and title sidebar
+3th page is login
+4th page is Signin
+5th page is private route page for the premium corses
+
+if user login then go premium page or logout go login page for login
+
+if you have no account so go and sign inpage
+
+<===========================///////////===========================>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

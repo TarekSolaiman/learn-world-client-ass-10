@@ -29,7 +29,10 @@ const Courses = () => {
           ))}
         </div>
       </section>
-      <button className="flex items-center justify-center w-80 my-10 mx-auto p-3 font-semibold tracking-wide rounded-md bg-yellow-400 text-gray-900">
+      <p className="text-white text-center">
+        Click the downloade button for our courses details{" "}
+      </p>
+      <button className="flex items-center justify-center w-80 my-5 mx-auto p-3 font-semibold tracking-wide rounded-md bg-yellow-400 ">
         <a href={PDF} download="myfile">
           Downloade PDF
         </a>
