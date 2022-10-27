@@ -13,6 +13,22 @@ const Courses = () => {
       .then((res) => res.json())
       .then((data) => setCetagori(data));
   }, []);
+
+  // downloade pdf ........
+  const btnDownloader = () => {
+    fetch("ReadeBookPDF.pdf").then((res) => {
+      res.blob().then((blob) => {
+        const fileURL = window.URL.createObjectURL(blob);
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download =
+          "https://mail.google.com/mail/u/0/#inbox/FMfcgzGqQmVWscxlMcnPHNXZGVSBFNnL?projector=1&messagePartId=0.1";
+        alink.click();
+
+        console.log(fileURL);
+      });
+    });
+  };
   return (
     <div>
       <section className="grid grid-flow-col">
@@ -27,6 +43,12 @@ const Courses = () => {
           ))}
         </div>
       </section>
+      <button
+        className="flex items-center justify-center w-80 my-10 mx-auto p-3 font-semibold tracking-wide rounded-md bg-yellow-400 text-gray-900"
+        onClick={btnDownloader}
+      >
+        Downloade PDF
+      </button>
     </div>
   );
 };
